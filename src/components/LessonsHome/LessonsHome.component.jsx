@@ -10,7 +10,7 @@ function LessonsHome(props) {
   return (
       <Container className="row m-auto">
 
-        {props.lessons.map((i) =>
+        {props.lessons.slice(0).reverse().map((i) =>
           <Card style={{ width: '30%',margin:10,marginTop:40 }} className="card-clickable">
             <Card.Body>
               <Card.Title>
