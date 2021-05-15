@@ -11,7 +11,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 
-function CreateNewEmpty() {
+function CreateNewEmpty(props) {
 
   // states
   const [show, setShow] = useState(false);
@@ -24,17 +24,14 @@ function CreateNewEmpty() {
   // redux
   const dispatch = useDispatch();
 
-
   // inside functions
   const createLesson = () => {
 
       if (name) {
-
         // dispatch action to create new lesson
         dispatch(CreateLesson(name));
         // then we should close modal
         handleClose();
-
       } else {
         alert('Name is empty!')
       };
@@ -42,33 +39,56 @@ function CreateNewEmpty() {
   };
 
 
-  return (
-    <>
+  if (props.small) {
+    return (
+      <div className="mt-3 text-center columns align-items-center justify-content-center">
 
-      <Card className="columns align-items-center p-5 card-add" onClick={handleShow}>
-        <Card.Body>
-          <a>
-            +
-          </a>
-        </Card.Body>
-      </Card>
+        <Button variant="dark" onClick={handleShow}>
+          Create New 🖊️
+        </Button>
 
-      <Modal
-        show={show}
-        onHide={handleClose}
-        keyboard={false}
-      >
-        <Modal.Body>
-          <h3>Choose a name</h3>
-          <Form.Control value={name} onChange={(val) => setName(val.target.value)} type="text" className="mt-3" placeholder="Learning Bootstrap ..." />
-          <Button variant="primary" className="mt-3" onClick={createLesson}>
-            Create 🚀
-          </Button>
-        </Modal.Body>
-      </Modal>
+        <Modal
+          show={show}
+          onHide={handleClose}
+          keyboard={false}
+        >
+          <Modal.Body>
+            <h3>Choose a name</h3>
+            <Form.Control value={name} onChange={(val) => setName(val.target.value)} type="text" className="mt-3" placeholder="Learning Bootstrap ..." />
+            <Button variant="primary" className="mt-3" onClick={createLesson}>
+              Create 🚀
+            </Button>
+          </Modal.Body>
+        </Modal>
 
-    </>
-  );
+      </div>
+    );
+  } else {
+    return (
+      <>
+        <Card className="columns align-items-center p-5 card-add" onClick={handleShow}>
+          <Card.Body>
+            <a>
+              +
+            </a>
+          </Card.Body>
+        </Card>
+        <Modal
+          show={show}
+          onHide={handleClose}
+          keyboard={false}
+        >
+          <Modal.Body>
+            <h3>Choose a name</h3>
+            <Form.Control value={name} onChange={(val) => setName(val.target.value)} type="text" className="mt-3" placeholder="Learning Bootstrap ..." />
+            <Button variant="primary" className="mt-3" onClick={createLesson}>
+              Create 🚀
+            </Button>
+          </Modal.Body>
+        </Modal>
+      </>
+    );
+  };
 
 };
 

@@ -6,7 +6,6 @@ import CreateNewEmpty from '../CreateNewEmpty/CreateNewEmpty.component';
 import LessonsHome from '../LessonsHome/LessonsHome.component';
 
 
-
 function Home() {
 
   // redux
@@ -25,9 +24,12 @@ function Home() {
             Lessons you've created before!
           </h2>
 
+          <CreateNewEmpty small />
+
           <LessonsHome
             lessons={reducer.lessons}
           />
+          
         </>
     );
   } else {
