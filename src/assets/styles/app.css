@@ -1,0 +1,32 @@
+@font-face {
+  font-family: DM Sans;
+  src: url('../fonts/DMSans-Regular.ttf');
+}
+
+* {
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h1, h2, h3, h4, h5, h6, p, a, li, i, {
+  font-family: "DM Sans", sans-serif;
+}
+
+.card-add {
+  width: 18rem;
+  display: flex;
+  align-self: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  cursor: pointer;
+}
+
+.card-add:hover {
+  box-shadow: 3px 2px 46px -11px #f9f9f9;
+}
+
+.card-add a {
+  font-size: 55px;
+}
