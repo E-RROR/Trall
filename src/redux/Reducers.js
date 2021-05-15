@@ -12,6 +12,15 @@ const reducer = (state = INITIAL_STATE, action) => {
         loading: !state.loading
       }
 
+    case 'CREATE':
+      return {
+        ...state,
+        lessons: [...state.lessons, {
+          'title': action.payload,
+          '_id': Math.floor(Math.random() * 100000)
+        }]
+      }
+
     default:
       return state;
   }
