@@ -1,11 +1,13 @@
 import React, {useState,useEffect} from 'react';
 
 // react drafs and wysgi
-import { EditorState,convertFromHTML,ContentState} from 'draft-js';
+import Draft,{EditorState,convertFromHTML,ContentState,RichUtils} from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { convertToHTML } from 'draft-convert';
 import parse from 'html-react-parser';
+import CodeUtils from 'draft-js-code';
+
 
 // React bootstrap
 import Container from 'react-bootstrap/Container';
@@ -51,6 +53,40 @@ function Part() {
         reducer.lessons,lid,pid,convertToHTML(editorState.getCurrentContent())
       ));
       notify();
+  };
+
+  // plugin functions for code support
+  const handleKeyCommand = (command) => {
+    let newState;
+    if (CodeUtils.hasSelectionInBlock(editorState)) {
+      newState = CodeUtils.handleKeyCommand(editorState, command);
+    };
+    if (!newState) {
+      newState = RichUtils.handleKeyCommand(editorState, command);
+    };
+    if (newState) {
+      setEditorState(newState);
+      return 'handled';
+    }
+    return 'not-handled';
+  }
+
+  const keyBindingFn = (evt) => {
+    if (!CodeUtils.hasSelectionInBlock(editorState)) return Draft.getDefaultKeyBinding(evt);
+    const command = CodeUtils.getKeyBinding(evt);
+    return command || Draft.getDefaultKeyBinding(evt);
+  }
+
+  const handleReturn = (evt) => {
+    if (!CodeUtils.hasSelectionInBlock(editorState)) return 'not-handled';
+    setEditorState(CodeUtils.handleReturn(evt, editorState));
+    return 'handled';
+  }
+
+  const onTab = (evt) => {
+    if (!CodeUtils.hasSelectionInBlock(editorState)) return 'not-handled';
+    setEditorState(CodeUtils.onTab(evt, editorState));
+    return 'handled';
   };
 
   // Get Part details
@@ -112,6 +148,13 @@ function Part() {
               wrapperClassName="wrapper-class"
               editorClassName="editor-class"
               toolbarClassName="toolbar-class"
+              toolbar={{
+               options: ['inline','blockType','list','emoji','image'],
+              }}
+              keyBindingFn={keyBindingFn}
+              handleKeyCommand={handleKeyCommand}
+              handleReturn={handleReturn}
+              onTab={onTab}
           />
           <div className="mt-3 text-center columns align-items-center justify-content-center mb-5">
             <Button onClick={writeContent} variant="dark">Save & write changes 💾</Button>
