@@ -7,7 +7,7 @@ import {
 
 // components
 import Home from './components/Home/Home.component';
-
+import Lesson from './components/Lesson/Lesson.component';
 
 
 function App() {
@@ -15,8 +15,12 @@ function App() {
       <Router>
           <Switch>
 
-            <Route path="/">
+            <Route exact path="/">
               <Home />
+            </Route>
+
+            <Route path="/l/:id">
+              <Lesson />
             </Route>
 
           </Switch>

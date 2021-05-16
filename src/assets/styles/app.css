@@ -38,3 +38,11 @@ h1, h2, h3, h4, h5, h6, p, a, li, i, {
 .card-clickable:hover {
   box-shadow: 3px 2px 46px -11px #c3c3c3;
 }
+
+.w70 {
+  width: 70%;
+}
+
+.tblack {
+  color: black !important;
+}

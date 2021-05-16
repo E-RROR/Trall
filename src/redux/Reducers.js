@@ -17,9 +17,17 @@ const reducer = (state = INITIAL_STATE, action) => {
         ...state,
         lessons: [...state.lessons, {
           'title': action.payload,
-          '_id': Math.floor(Math.random() * 100000)
+          '_id': Math.floor(Math.random() * 100000),
+          'parts': []
         }]
       }
+
+    case 'PART':
+      return {
+        ...state,
+        lessons: action.payload
+      }
+
 
     default:
       return state;
