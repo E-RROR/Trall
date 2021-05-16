@@ -1,16 +1,9 @@
 const INITIAL_STATE = {
-  loading: false,
   lessons: []
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-
-    case 'LOAD':
-      return {
-        ...state,
-        loading: !state.loading
-      }
 
     case 'CREATE':
       return {
@@ -27,7 +20,6 @@ const reducer = (state = INITIAL_STATE, action) => {
         ...state,
         lessons: action.payload
       }
-
 
     default:
       return state;

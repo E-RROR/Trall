@@ -1,9 +1,3 @@
-export function ChangeLoad() {
-    return {
-        type: 'LOAD',
-    }
-};
-
 export function CreateLesson(name) {
     return {
         type: 'CREATE',
@@ -52,13 +46,10 @@ export function WritePartContent(lessons,lid,pid,content) {
 
     // save part to lesson
     // fist lesson removes the part
-    let filtered_lesson_parts = lesson.parts.filter((i) => i._id !== parseInt(pid));
+    let lesson_part_index = lesson.parts.findIndex((i) => i === parseInt(pid))
 
     // then add the part to it again
-    lesson.parts = [
-      ...filtered_lesson_parts,
-      part
-    ]
+    lesson.parts[lesson_part_index] = part
 
     // filter the all lessons and remove current lesson
     let filtered_lesson = lessons.filter((i) => i._id !== parseInt(lid));
