@@ -1,7 +1,6 @@
 import {useEffect,useState} from 'react';
 
 // react bootstrap
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 
 // react router
@@ -51,10 +50,6 @@ function Lesson() {
               <h1 className="text-center mt-5">
                 {lesson.title}
               </h1>
-
-              <h2 className="text-center mt-2">
-                {lesson.parts?.length ? `${lesson.parts.length} parts` : '0 parts'}
-              </h2>
 
               <CreatePart id={id} />
 

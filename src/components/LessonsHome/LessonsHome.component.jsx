@@ -18,7 +18,7 @@ function LessonsHome(props) {
             style={{ width: '30%',margin:10,marginTop:40 }}
             className="card-clickable"
           >
-          
+
             <Card.Body>
               <Card.Title>
                 <h3>{i.title}</h3>

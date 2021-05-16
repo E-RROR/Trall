@@ -8,6 +8,7 @@ import {
 // components
 import Home from './components/Home/Home.component';
 import Lesson from './components/Lesson/Lesson.component';
+import Part from './components/Part/Part.component';
 
 
 function App() {
@@ -21,6 +22,10 @@ function App() {
 
             <Route path="/l/:id">
               <Lesson />
+            </Route>
+
+            <Route path="/p/:lid/:pid">
+              <Part />
             </Route>
 
           </Switch>

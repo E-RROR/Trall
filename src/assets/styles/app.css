@@ -46,3 +46,18 @@ h1, h2, h3, h4, h5, h6, p, a, li, i, {
 .tblack {
   color: black !important;
 }
+
+.wrapper-class {
+  padding: 1rem;
+  border: 1px solid #f9f9f9;
+}
+
+.editor-class {
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border: 1px solid #f9f9f9;
+}
+
+.toolbar-class {
+  border: 1px solid #f9f9f9;
+}
