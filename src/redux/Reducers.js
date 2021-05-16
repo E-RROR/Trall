@@ -15,6 +15,12 @@ const reducer = (state = INITIAL_STATE, action) => {
         }]
       }
 
+    case 'DELETE':
+      return {
+        ...state,
+        lessons: action.payload
+      }
+
     case 'PART':
       return {
         ...state,

@@ -5,6 +5,17 @@ export function CreateLesson(name) {
     }
 };
 
+export function DeleteLesson(l,lessons) {
+
+    // New lesson object
+    let new_lessons = lessons.filter(element => element._id !== parseInt(l._id));
+
+    return {
+        type: 'DELETE',
+        payload: new_lessons
+    }
+};
+
 export function CreatePartAction(lessons,id,title) {
 
     // Find lesson object
