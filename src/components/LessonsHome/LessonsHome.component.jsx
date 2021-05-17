@@ -3,12 +3,18 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 
+// router
+import { useHistory } from "react-router-dom";
+
 // redux
 import {useDispatch} from 'react-redux';
 import {DeleteLesson} from '../../redux/Actions';
 
 
 function LessonsHome(props) {
+
+  // router hook
+  const history = useHistory();
 
   // redux
   const dispatch = useDispatch();
@@ -24,7 +30,7 @@ function LessonsHome(props) {
             style={{ width: '30%',margin:10,marginTop:40 }}
             className="card-clickable"
           >
-            <Card.Body onClick={() => window.location.href = `/l/${i._id}`}>
+            <Card.Body onClick={() => history.push(`/l/${i._id}`)}>
               <Card.Title>
                 <h3>{i.title}</h3>
               </Card.Title>
