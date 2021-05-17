@@ -149,7 +149,7 @@ function Part() {
               editorClassName="editor-class"
               toolbarClassName="toolbar-class"
               toolbar={{
-               options: ['inline','blockType','list','emoji','image'],
+               options: ['inline','blockType','list','emoji'],
               }}
               keyBindingFn={keyBindingFn}
               handleKeyCommand={handleKeyCommand}
