@@ -4,10 +4,6 @@ import React, {useState,useEffect} from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.bubble.css';
 
-// react html parser
-import parse from 'html-react-parser';
-
-
 // React bootstrap
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
