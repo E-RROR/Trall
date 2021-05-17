@@ -1,4 +1,4 @@
-import {useEffect,useState} from 'react';
+import {useState,useEffect,useCallback} from 'react';
 
 // react bootstrap
 import Container from 'react-bootstrap/Container';
@@ -29,13 +29,15 @@ function Lesson() {
   const reducer = useSelector(state => state.reducer);
 
   // inside functions
-  const findlesson = inpt => reducer.lessons.find(element => element._id === parseInt(inpt));
 
-  // effects
+  const getlesson = useCallback(() => {
+    let inpt = reducer.lessons.find(element => element._id === parseInt(id))
+    setLesson(inpt);
+  }, [reducer.lessons,id]);
+
   useEffect(() => {
-      let lesson_obj = findlesson(id);
-      setLesson(lesson_obj);
-  }, [id]);
+      getlesson();
+  });
 
   return (
       <Container>
