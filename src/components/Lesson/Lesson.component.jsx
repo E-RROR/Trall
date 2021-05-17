@@ -29,13 +29,13 @@ function Lesson() {
   const reducer = useSelector(state => state.reducer);
 
   // inside functions
-  const findlesson = inpt => reducer.lessons.find(element => element._id == inpt);
+  const findlesson = inpt => reducer.lessons.find(element => element._id === parseInt(inpt));
 
   // effects
   useEffect(() => {
       let lesson_obj = findlesson(id);
       setLesson(lesson_obj);
-  }, []);
+  }, [id]);
 
   return (
       <Container>

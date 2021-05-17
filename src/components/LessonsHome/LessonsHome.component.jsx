@@ -3,9 +3,6 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 
-// react router
-import {Link} from 'react-router-dom';
-
 // redux
 import {useDispatch} from 'react-redux';
 import {DeleteLesson} from '../../redux/Actions';

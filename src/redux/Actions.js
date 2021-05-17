@@ -5,6 +5,13 @@ export function CreateLesson(name) {
     }
 };
 
+export function ShowWelcome() {
+    return {
+        type: 'SHOW',
+    }
+};
+
+
 export function DeleteLesson(l,lessons) {
 
     // New lesson object

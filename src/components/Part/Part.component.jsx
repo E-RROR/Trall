@@ -117,7 +117,7 @@ function Part() {
       setEdit(true);
     };
 
-  }, [reducer.lessons]);
+  }, [reducer.lessons,lid,pid]);
 
 
   return (
@@ -133,7 +133,7 @@ function Part() {
 
       <div className="mt-3 text-center columns align-items-center justify-content-center mb-2">
         <Button onClick={() => setEdit(!edit)} variant="light">
-          {edit ? 'Cancel' : 'Edit'}
+          {edit ? 'Exit editor' : 'Edit'}
         </Button>
       </div>
 

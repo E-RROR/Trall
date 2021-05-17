@@ -1,9 +1,16 @@
 const INITIAL_STATE = {
-  lessons: []
+  lessons: [],
+  showWelcome: false,
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+
+    case 'SHOW':
+      return {
+        ...state,
+        showWelcome: true
+      }
 
     case 'CREATE':
       return {

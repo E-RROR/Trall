@@ -4,6 +4,7 @@ import {useSelector} from 'react-redux';
 // components
 import CreateNewEmpty from '../CreateNewEmpty/CreateNewEmpty.component';
 import LessonsHome from '../LessonsHome/LessonsHome.component';
+import Welcome from '../Welcome/Welcome.component';
 
 
 function Home() {
@@ -16,6 +17,9 @@ function Home() {
   if (reducer.lessons?.[0]) {
     return (
         <>
+          {!reducer.showWelcome &&
+            <Welcome />
+          }
           <h1 className="text-center mt-5">
             😃
           </h1>
@@ -29,13 +33,15 @@ function Home() {
           <LessonsHome
             lessons={reducer.lessons}
           />
-          
+
         </>
     );
   } else {
     return (
         <>
-
+          {!reducer.showWelcome && 
+            <Welcome />
+          }
           <h1 className="text-center mt-5">
             🙂
           </h1>
