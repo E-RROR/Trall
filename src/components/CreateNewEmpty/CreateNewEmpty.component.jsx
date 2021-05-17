@@ -68,9 +68,9 @@ function CreateNewEmpty(props) {
       <>
         <Card className="columns align-items-center p-5 card-add" onClick={handleShow}>
           <Card.Body>
-            <a>
+            <p>
               +
-            </a>
+            </p>
           </Card.Body>
         </Card>
         <Modal

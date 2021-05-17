@@ -1,9 +1,6 @@
 import {useState} from 'react';
 import Logo from '../../assets/images/logo512.png';
 
-// redux
-import {useSelector} from 'react-redux';
-
 // components
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
@@ -24,7 +21,6 @@ function Welcome() {
       dispatch(ShowWelcome());
       setShow(false);
   };
-  const handleShow = () => setShow(true);
 
   return (
         <Modal
@@ -35,7 +31,7 @@ function Welcome() {
           size='lg'
         >
           <div className="columns text-center justify-content-center align-items-center">
-            <img src={Logo} width="25%" className="img mt-5 mb-2" />
+            <img alt="Trall" src={Logo} width="25%" className="img mt-5 mb-2" />
             <Modal.Body>
               <h1 className="mt-4 mb-1">Welcome to Trall 🎉</h1>
               <h5 className="p-5">
