@@ -9,14 +9,14 @@ import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 
 // react router
-import {Link,useParams} from "react-router-dom";
+import {Link,useParams,Redirect} from "react-router-dom";
 
 // redux
 import {useDispatch,useSelector} from 'react-redux';
-import {WritePartContent} from '../../redux/Actions';
+import {WritePartContent,DeletePart} from '../../redux/Actions';
 
 // React toastify
-import { ToastContainer, toast } from 'react-toastify';
+import {ToastContainer,toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -45,6 +45,15 @@ function Part() {
       notify();
   };
 
+  // inside functions
+  const deletePart = () => {
+      window.history.back()
+      // dispatch it
+      dispatch(DeletePart(
+        reducer.lessons,lid,pid
+      ));
+  };
+
 
   // Get Part details
   useEffect(() => {
@@ -59,7 +68,7 @@ function Part() {
     setPart(part);
 
     // set part content if exist to state
-    if (part.content?.length) {
+    if (part?.content?.length) {
         // Check that we have content already
         setC(part.content);
     };
@@ -85,36 +94,43 @@ function Part() {
     'link', 'image', 'code-block'
   ];
 
-  return (
-    <Container>
+  if (part?.content || c) {
+    return (
+      <Container>
 
-      <Link to={`/l/${lid}`}>
-        <h5 className="text-center mt-4">Go Back</h5>
-      </Link>
+        <Link to={`/l/${lid}`}>
+          <h5 className="text-center mt-4">Go Back</h5>
+        </Link>
 
-      <h2 className="text-center mt-5 mb-1">
-        {part?.title}
-      </h2>
-      <div className="mt-3 text-center columns align-items-center justify-content-center mb-5">
-        <Button onClick={writeContent} variant="dark">Save changes 💾</Button>
-      </div>
+        <h2 className="text-center mt-5 mb-1">
+          {part?.title}
+        </h2>
 
-      <hr className="mb-5 mt-5" />
+        <div className="mt-3 text-center columns align-items-center justify-content-center mb-1">
+          <Button onClick={writeContent} variant="dark">Save changes 💾</Button>
+        </div>
 
-      <>
-        <ReactQuill
-          modules={modules}
-          formats={formats}
-          value={c}
-          theme='bubble'
-          onChange={(e) => setC(e)}
-        />
-      </>
+        <div className="mt-2 text-center columns align-items-center justify-content-center mb-5">
+          <Button onClick={deletePart} variant="outline-danger">Delete</Button>
+        </div>
 
-      <ToastContainer />
+        <hr className="mb-5 mt-5" />
 
-    </Container>
-  );
+        <>
+          <ReactQuill
+            modules={modules}
+            formats={formats}
+            value={c}
+            theme='bubble'
+            onChange={(e) => setC(e)}
+          />
+        </>
+
+        <ToastContainer />
+
+      </Container>
+    );
+  };
 
 };
 
