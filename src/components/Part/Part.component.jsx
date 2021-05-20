@@ -9,7 +9,7 @@ import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 
 // react router
-import {Link,useParams,Redirect} from "react-router-dom";
+import {Link,useParams} from "react-router-dom";
 
 // redux
 import {useDispatch,useSelector} from 'react-redux';

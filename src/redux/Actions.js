@@ -86,9 +86,6 @@ export function DeletePart(lessons,lid,pid) {
     // Find lesson object
     let lesson = lessons.find(element => element._id === parseInt(lid));
 
-    // find part object
-    let part = lesson.parts.find(element => element._id === parseInt(pid));
-
     // new parts
     let new_parts = lesson.parts.filter((i) => i._id !== parseInt(pid))
 
