@@ -1,26 +1,15 @@
 // react bootstrap
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 
 // router
 import { useHistory } from "react-router-dom";
-
-// redux
-import {useDispatch} from 'react-redux';
-import {DeleteLesson} from '../../redux/Actions';
 
 
 function LessonsHome(props) {
 
   // router hook
   const history = useHistory();
-
-  // redux
-  const dispatch = useDispatch();
-
-  // inside functions
-  const remove = (i) => dispatch(DeleteLesson(i,props.lessons));
 
   return (
       <Container className="row m-auto">
@@ -35,7 +24,6 @@ function LessonsHome(props) {
                 <h3>{i.title}</h3>
               </Card.Title>
             </Card.Body>
-            <Button variant="outline-danger" onClick={() => remove(i)}>Delete</Button>
           </Card>
         )}
 
