@@ -1,7 +1,14 @@
-from flask import Flask, Response
-app = Flask(__name__)
+from http.server import BaseHTTPRequestHandler
+from os.path import dirname, abspath, join
+dir = dirname(abspath(__file__))
 
-@app.route('/', defaults={'path': ''})
-@app.route('/<path:path>')
-def catch_all(path):
-    return Response("<h1>Flask</h1><p>You visited: /%s</p>" % (path), mimetype="text/html")
+class handler(BaseHTTPRequestHandler):
+
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header('Content-type','text/plain')
+        self.end_headers()
+        with open(join(dir, '..', 'data', 'file.txt'), 'r') as file:
+          for line in file:
+            self.wfile.write(line.encode())
+        return
