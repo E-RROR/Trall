@@ -103,3 +103,10 @@ export function DeletePart(lessons,lid,pid) {
         payload: new_lessons
     }
 };
+
+export function Wish(text) {
+    return {
+        type: 'WISH',
+        payload: text
+    }
+};

@@ -1,6 +1,7 @@
 const INITIAL_STATE = {
   lessons: [],
   showWelcome: false,
+  wishBoard: '',
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -10,6 +11,12 @@ const reducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         showWelcome: true
+      }
+
+    case 'WISH':
+      return {
+        ...state,
+        wishBoard: action.payload
       }
 
     case 'CREATE':
